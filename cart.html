@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito | RedStore</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="images/icono.png" alt="logo" width="125px"></a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="products.html">Productos</a></li>
+                    <li><a href="about.html">Acerca de</a></li>
+                    <li><a href="conct.html">Contacto</a></li>
+                    <li><a href="account.html">Cuenta</a></li>
+                </ul>
+            </nav>
+            <a href="cart.html"><img src="images/cart.png" width="30px" height="30px"></a>
+            <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
+        </div>
+    </div>
+
+    <!-- Detalles del carrito -->
+    <div class="small-container cart-page">
+        <div id="cart-empty" style="display:none; text-align:center; padding:60px 0; color:#555;">
+            <h2>Tu carrito está vacío</h2>
+            <p>Agrega productos desde la tienda para verlos aquí.</p>
+        </div>
+        <table id="cart-table">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items"></tbody>
+        </table>
+        <div id="cart-actions" style="display:none; margin-top: 30px; justify-content: space-between; align-items: flex-start; gap: 20px; flex-wrap: wrap;">
+            <button id="clear-cart" class="btn" style="background:#ff523b; color:#fff; padding:12px 24px; border:none; border-radius:30px;">Vaciar carrito</button>
+            <div class="total-price" style="flex:1; max-width:400px;">
+                <table>
+                    <tr>
+                        <td>Subtotal</td>
+                        <td id="cart-subtotal">$0.00</td>
+                    </tr>
+                    <tr>
+                        <td>Impuestos</td>
+                        <td id="cart-taxes">$0.00</td>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td id="cart-total">$0.00</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pie de página -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <h3>Descarga nuestra app</h3>
+                    <p>Descarga la aplicación para móviles Android e iOS.</p>
+                    <div class="app-logo">
+                        <img src="images/play-store.png" alt="Google Play">
+                        <img src="images/app-store.png" alt="App Store">
+                    </div>
+                </div>
+                <div class="footer-col-2">
+                    <img src="images/icono.png" alt="logo blanco">
+                    <p>Nuestro propósito es hacer que el placer y los beneficios del deporte sean accesibles para todos.</p>
+                </div>
+                <div class="footer-col-3">
+                    <h3>Enlaces útiles</h3>
+                    <ul>
+                        <li>Cupones</li>
+                        <li>Blog</li>
+                        <li>Política de devoluciones</li>
+                        <li>Afiliados</li>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <h3>Síguenos</h3>
+                    <ul>
+                        <li>Facebook</li>
+                        <li>Twitter</li>
+                        <li>Instagram</li>
+                        <li>YouTube</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">Copyright 2020 - Samwit Adhikary</p>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+
+    <script>
+        const STORAGE_KEY = 'iconoCart';
+
+        function formatPrice(value) {
+            return '$' + value.toFixed(2);
+        }
+
+        function getCart() {
+            return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        }
+
+        function saveCart(cart) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+        }
+
+        function renderCart() {
+            const cart = getCart();
+            const empty = document.getElementById('cart-empty');
+            const table = document.getElementById('cart-table');
+            const actions = document.getElementById('cart-actions');
+            const itemsBody = document.getElementById('cart-items');
+
+            if (!cart.length) {
+                empty.style.display = 'block';
+                table.style.display = 'none';
+                actions.style.display = 'none';
+                return;
+            }
+
+            empty.style.display = 'none';
+            table.style.display = 'table';
+            actions.style.display = 'flex';
+            itemsBody.innerHTML = '';
+
+            let subtotal = 0;
+            cart.forEach(item => {
+                const row = document.createElement('tr');
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+
+                row.innerHTML = `
+                    <td>
+                        <div class="cart-info">
+                            <img src="${item.image}" alt="${item.name}">
+                            <div>
+                                <p>${item.name}</p>
+                                <small>Precio: ${formatPrice(item.price)}</small>
+                                <br>
+                                <a href="#" class="remove-item" data-id="${item.id}">Eliminar</a>
+                            </div>
+                        </div>
+                    </td>
+                    <td><input type="number" min="1" value="${item.quantity}" data-id="${item.id}" style="width:60px;"></td>
+                    <td>${formatPrice(itemTotal)}</td>
+                `;
+
+                itemsBody.appendChild(row);
+            });
+
+            document.getElementById('cart-subtotal').textContent = formatPrice(subtotal);
+            const taxes = subtotal * 0.175;
+            document.getElementById('cart-taxes').textContent = formatPrice(taxes);
+            document.getElementById('cart-total').textContent = formatPrice(subtotal + taxes);
+
+            itemsBody.querySelectorAll('.remove-item').forEach(link => {
+                link.addEventListener('click', event => {
+                    event.preventDefault();
+                    const id = event.target.dataset.id;
+                    removeFromCart(id);
+                });
+            });
+
+            itemsBody.querySelectorAll('input[type="number"]').forEach(input => {
+                input.addEventListener('change', event => {
+                    const id = event.target.dataset.id;
+                    const quantity = parseInt(event.target.value, 10) || 1;
+                    updateQuantity(id, quantity);
+                });
+            });
+        }
+
+        function updateQuantity(id, quantity) {
+            const cart = getCart();
+            const item = cart.find(entry => entry.id === id);
+            if (!item) return;
+            item.quantity = quantity < 1 ? 1 : quantity;
+            saveCart(cart);
+            renderCart();
+        }
+
+        function removeFromCart(id) {
+            let cart = getCart();
+            cart = cart.filter(item => item.id !== id);
+            saveCart(cart);
+            renderCart();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('clear-cart').addEventListener('click', () => {
+                localStorage.removeItem(STORAGE_KEY);
+                renderCart();
+            });
+            renderCart();
+        });
+
+        function menutoggle() {
+            const MenuItems = document.getElementById("MenuItems");
+            if (MenuItems.style.maxHeight == "0px") {
+                MenuItems.style.maxHeight = "200px"
+            }
+            else {
+                MenuItems.style.maxHeight = "0px"
+            }
+        }
+
+        var MenuItems = document.getElementById("MenuItems");
+        if (MenuItems) MenuItems.style.maxHeight = "0px";
+    </script>
+
+</body>
+
+</html>

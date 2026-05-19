@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acerca de | RedStore</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="images/icono.png" alt="logo" width="125px"></a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="products.html">Productos</a></li>
+                    <li><a href="about.html">Acerca de</a></li>
+                    <li><a href="conct.html">Contacto</a></li>
+                    <li><a href="account.html">Cuenta</a></li>
+                </ul>
+            </nav>
+            <a href="cart.html"><img src="images/cart.png" width="30px" height="30px" alt="carrito"></a>
+            <img src="images/menu.png" class="menu-icon" onclick="menutoggle()" alt="menú">
+        </div>
+    </div>
+
+    <div class="about-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-2">
+                    <h1>Conoce más sobre RedStore</h1>
+                    <p>RedStore es una tienda virtual dedicada a ofrecer ropa deportiva y accesorios con estilo. Nuestro objetivo es
+                        brindar experiencias de compra fáciles, seguras y llenas de estilo, con productos seleccionados para
+                        tu día a día.</p>
+                    <p>Trabajamos con marcas confiables y buscamos que cada artículo combine diseño, comodidad y calidad.</p>
+                    <a href="products.html" class="btn">Ver productos</a>
+                </div>
+                <div class="col-2">
+                    <img src="images/image1.png" alt="Sobre nosotros" width="100%">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="small-container">
+        <div class="row">
+            <div class="col-3">
+                <i class="fa fa-truck"></i>
+                <h3>Envío rápido</h3>
+                <p>Entregas confiables y rápidas a todo el país.</p>
+            </div>
+            <div class="col-3">
+                <i class="fa fa-thumbs-up"></i>
+                <h3>Productos de calidad</h3>
+                <p>Solo trabajamos con marcas seleccionadas y materiales duraderos.</p>
+            </div>
+            <div class="col-3">
+                <i class="fa fa-headphones"></i>
+                <h3>Soporte al cliente</h3>
+                <p>Atención amable y rápida para ayudarte en todo momento.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <h3>Descarga nuestra app</h3>
+                    <p>Descarga la aplicación para móviles Android e iOS.</p>
+                    <div class="app-logo">
+                        <img src="images/play-store.png" alt="Google Play">
+                        <img src="images/app-store.png" alt="App Store">
+                    </div>
+                </div>
+                <div class="footer-col-2">
+                    <img src="images/icono.png" alt="logo blanco">
+                    <p>Nuestro propósito es hacer que el placer y los beneficios del deporte sean accesibles para todos.</p>
+                </div>
+                <div class="footer-col-3">
+                    <h3>Enlaces útiles</h3>
+                    <ul>
+                        <li>Cupones</li>
+                        <li>Blog</li>
+                        <li>Política de devoluciones</li>
+                        <li>Afiliados</li>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <h3>Síguenos</h3>
+                    <ul>
+                        <li>Facebook</li>
+                        <li>Twitter</li>
+                        <li>Instagram</li>
+                        <li>YouTube</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">Copyright 2020 - Samwit Adhikary</p>
+        </div>
+    </div>
+
+    <script>
+        var MenuItems = document.getElementById("MenuItems");
+        MenuItems.style.maxHeight = "0px";
+        function menutoggle() {
+            if (MenuItems.style.maxHeight == "0px") {
+                MenuItems.style.maxHeight = "200px"
+            }
+            else {
+                MenuItems.style.maxHeight = "0px"
+            }
+        }
+    </script>
+</body>
+
+</html>

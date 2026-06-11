@@ -49,21 +49,15 @@
                     <label>País</label>
                     <input type="text" name="country" placeholder="México" required>
 
-                    <label>Número de tarjeta</label>
-                    <input type="text" name="card-number" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                    <label>Método de pago</label>
+                    <input type="text" name="payment-method" value="Nequi" readonly>
 
-                    <div class="form-row">
-                        <div>
-                            <label>Expiración</label>
-                            <input type="text" name="expiry" placeholder="MM/AA" maxlength="5" required>
-                        </div>
-                        <div>
-                            <label>CVV</label>
-                            <input type="text" name="cvv" placeholder="123" maxlength="4" required>
-                        </div>
-                    </div>
+                    <label>Número de Nequi</label>
+                    <input type="text" name="nequi-number" value="3175842728" readonly>
 
-                    <button id="pay-now" class="btn">Pagar ahora</button>
+                    <p class="payment-note">Realiza la transferencia Nequi al número <strong>3175842728</strong> y luego confirma tu compra.</p>
+
+                    <button id="pay-now" class="btn">Confirmar pago en Nequi</button>
                 </form>
                 <div id="checkout-confirmation"></div>
             </div>

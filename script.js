@@ -242,28 +242,13 @@ function processCheckout(event) {
     const email = form.elements['email'].value.trim();
     const name = form.elements['name'].value.trim();
     const address = form.elements['address'].value.trim();
-    const cardNumber = form.elements['card-number'].value.replace(/\s+/g, '');
-    const expiry = form.elements['expiry'].value.trim();
-    const cvv = form.elements['cvv'].value.trim();
 
-    if (!name || !email || !address || !cardNumber || !expiry || !cvv) {
+    if (!name || !email || !address) {
         showToast('Por favor completa todos los campos de pago.');
         return;
     }
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
         showToast('Ingresa un correo electrónico válido.');
-        return;
-    }
-    if (!/^\d{16}$/.test(cardNumber)) {
-        showToast('Ingresa un número de tarjeta válido de 16 dígitos.');
-        return;
-    }
-    if (!/^\d{2}\/\d{2}$/.test(expiry)) {
-        showToast('Ingresa una fecha de expiración válida MM/AA.');
-        return;
-    }
-    if (!/^\d{3,4}$/.test(cvv)) {
-        showToast('Ingresa un CVV válido.');
         return;
     }
 
@@ -276,10 +261,11 @@ function processCheckout(event) {
     if (confirmation) {
         confirmation.innerHTML = `
             <div class="checkout-confirmation-card">
-                <h2>Pago exitoso</h2>
-                <p>Gracias, ${name}. Tu orden <strong>#${orderNumber}</strong> ha sido procesada.</p>
-                <p>Monto cobrado: <strong>${total}</strong></p>
-                <p>Te enviamos un correo de confirmación a <strong>${email}</strong>.</p>
+                <h2>Pago en Nequi iniciado</h2>
+                <p>Gracias, ${name}. Tu orden <strong>#${orderNumber}</strong> ha sido registrada.</p>
+                <p>Envía el pago a Nequi al número <strong>3175842728</strong>.</p>
+                <p>Monto total: <strong>${total}</strong></p>
+                <p>Te enviaremos confirmación a <strong>${email}</strong> cuando recibamos el pago.</p>
                 <a href="products.html" class="btn btn-secondary">Seguir comprando</a>
             </div>
         `;

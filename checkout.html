@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | ICONO</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="images/icono.png" alt="logo" width="125px"></a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="products.html">Productos</a></li>
+                    <li><a href="about.html">Acerca de</a></li>
+                    <li><a href="conct.html">Contacto</a></li>
+                    <li><a href="account.html">Cuenta</a></li>
+                    <li><a href="checkout.html">Pagar</a></li>
+                </ul>
+            </nav>
+            <a href="cart.html" class="cart-link"><img src="images/cart.png" width="30px" height="30px"><span class="cart-count">0</span></a>
+            <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
+        </div>
+    </div>
+
+    <div class="small-container checkout-page">
+        <h2 class="title">Finaliza tu compra</h2>
+        <div class="checkout-grid">
+            <div class="checkout-form-card">
+                <h3>Información de envío</h3>
+                <form id="checkout-form" class="checkout-form">
+                    <label>Nombre completo</label>
+                    <input type="text" name="name" placeholder="Nombre y apellido" required>
+
+                    <label>Correo electrónico</label>
+                    <input type="email" name="email" placeholder="correo@dominio.com" required>
+
+                    <label>Dirección de envío</label>
+                    <input type="text" name="address" placeholder="Calle, número, ciudad" required>
+
+                    <label>País</label>
+                    <input type="text" name="country" placeholder="México" required>
+
+                    <label>Número de tarjeta</label>
+                    <input type="text" name="card-number" placeholder="1234 5678 9012 3456" maxlength="19" required>
+
+                    <div class="form-row">
+                        <div>
+                            <label>Expiración</label>
+                            <input type="text" name="expiry" placeholder="MM/AA" maxlength="5" required>
+                        </div>
+                        <div>
+                            <label>CVV</label>
+                            <input type="text" name="cvv" placeholder="123" maxlength="4" required>
+                        </div>
+                    </div>
+
+                    <button id="pay-now" class="btn">Pagar ahora</button>
+                </form>
+                <div id="checkout-confirmation"></div>
+            </div>
+            <div class="checkout-summary-card">
+                <h3>Resumen de la orden</h3>
+                <div id="checkout-items"></div>
+                <div class="checkout-summary">
+                    <div>
+                        <span>Subtotal</span>
+                        <span id="checkout-subtotal">$0.00</span>
+                    </div>
+                    <div>
+                        <span>Impuestos</span>
+                        <span id="checkout-taxes">$0.00</span>
+                    </div>
+                    <div>
+                        <span>Envío</span>
+                        <span id="checkout-shipping">$0.00</span>
+                    </div>
+                    <div class="checkout-total-row">
+                        <strong>Total</strong>
+                        <strong id="checkout-total">$0.00</strong>
+                    </div>
+                </div>
+                <div id="checkout-empty" class="checkout-empty" style="display:none;">
+                    <h3>No hay productos en el carrito</h3>
+                    <p>Agrega artículos en la tienda para finalizar tu compra.</p>
+                    <a href="products.html" class="btn btn-secondary">Ir a la tienda</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <h3>Descarga nuestra app</h3>
+                    <p>Descarga la aplicación para móviles Android e iOS.</p>
+                    <div class="app-logo">
+                        <img src="images/play-store.png" alt="Google Play">
+                        <img src="images/app-store.png" alt="App Store">
+                    </div>
+                </div>
+                <div class="footer-col-2">
+                    <img src="images/icono.png" alt="logo blanco">
+                    <p>Nuestro propósito es hacer que el placer y los beneficios del deporte sean accesibles para todos.</p>
+                </div>
+                <div class="footer-col-3">
+                    <h3>Enlaces útiles</h3>
+                    <ul>
+                        <li>Cupones</li>
+                        <li>Blog</li>
+                        <li>Política de devoluciones</li>
+                        <li>Afiliados</li>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <h3>Síguenos</h3>
+                    <ul>
+                        <li>Facebook</li>
+                        <li>Twitter</li>
+                        <li>Instagram</li>
+                        <li>YouTube</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">Copyright 2026 - ICONO</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

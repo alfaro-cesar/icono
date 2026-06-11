@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="script.js"></script>
 </head>
 
 <body>
@@ -48,7 +49,10 @@
             <tbody id="cart-items"></tbody>
         </table>
         <div id="cart-actions" style="display:none; margin-top: 30px; justify-content: space-between; align-items: flex-start; gap: 20px; flex-wrap: wrap;">
-            <button id="clear-cart" class="btn" style="background:#ff523b; color:#fff; padding:12px 24px; border:none; border-radius:30px;">Vaciar carrito</button>
+            <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
+                <button id="clear-cart" class="btn" style="background:#ff523b; color:#fff; padding:12px 24px; border:none; border-radius:30px;">Vaciar carrito</button>
+                <a href="checkout.html" class="btn btn-secondary" id="checkout-now" style="background:#555; color:#fff; padding:12px 24px; border:none; border-radius:30px;">Ir a pagar</a>
+            </div>
             <div class="total-price" style="flex:1; max-width:400px;">
                 <table>
                     <tr>
